@@ -15,6 +15,14 @@ function [] = isomatrix_velocity(A,id,varargin)
     
     %% set up default values for optional parameters: ('Labels')
     labels = {'','',''};
+    nn = 3;
+        
+    % validation of user input labels:
+    errorMsg1 = strcat('Labels error: please provide vector of size=',' ',num2str(nn),').'); 
+    errorMsg2 = 'Incorrect label formatting (must be cell-array).'; 
+    labelLength = @(x) assert(length(x)==nn,errorMsg1);
+    labelType = @(x) assert(length(x)==nn,errorMsg2);
+    addParameter(p,'Labels',labels);
         
     % read in optional parameters    
     [nParams] = length(varargin);

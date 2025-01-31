@@ -34,17 +34,17 @@ function [] = isomatrix_trajectory(A,x0,tF,varargin)
 
     
     %% set up default values for optional parameters: ('Color' and 'Labels')
+    nn = 3;
     
     % validation of user input color:
     vectorValidator = @(x) validateattributes(x,{'numeric'},{'size',[1,3]});
     addParameter(p,'Color',color,vectorValidator)
         
     % validation of user input labels:
-    errorMsg1 = strcat('Labels error: please provide vector of size=',' ',num2str(3),').'); 
+    errorMsg1 = strcat('Labels error: please provide vector of size=',' ',num2str(nn),').'); 
     errorMsg2 = 'Incorrect label formatting (must be cell-array).'; 
-    labelLength = @(x) assert(length(x)==3,errorMsg1);
-    labelType = @(x) assert(length(x)==3,errorMsg2);
-    addParameter(p,'Labels',labels);
+    labelLength = @(x) assert(length(x)==nn,errorMsg1);
+    labelType = @(x) assert(length(x)==nn,errorMsg2);
         
     % validate linestyle, linewidth:
     addParameter(p,'LineStyle',linestyle);
